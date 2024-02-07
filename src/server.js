@@ -7,7 +7,7 @@ const setupServer = () => {
 
   app.get("/plants", async (req, res) => {
     try {
-      const plants = await plantController.findAll(req, res);
+      const plants = await plantController.findAll(req);
       res.status(200).json(plants);
     } catch (error) {
       res
@@ -18,7 +18,7 @@ const setupServer = () => {
 
   app.post("/plants", async (req, res) => {
     try {
-      await plantController.create(req, res);
+      await plantController.create(req);
       res.status(201).json();
     } catch (error) {
       res
@@ -29,7 +29,7 @@ const setupServer = () => {
 
   app.put("/plants/:id", async (req, res) => {
     try {
-      await plantController.update(req, res);
+      await plantController.update(req);
       res.status(204).json();
     } catch (error) {
       res
@@ -40,7 +40,7 @@ const setupServer = () => {
 
   app.delete("/plants/:id", async (req, res) => {
     try {
-      await plantController.delete(req, res);
+      await plantController.delete(req);
       res.status(204).json();
     } catch (error) {
       res

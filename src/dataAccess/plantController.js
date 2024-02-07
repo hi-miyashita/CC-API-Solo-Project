@@ -3,20 +3,20 @@ const knex = require("knex")(config);
 const PLANT_TABLE = "planttable";
 
 module.exports = {
-  async findAll(req, res) {
+  async findAll(req) {
     const plants = await knex.select().from("planttable");
-    res.json(plants);
+    return plants;
   },
 
-  async create(req, res) {
+  async create(req) {
     knex(PLANT_TABLE).insert(req.body).returning("id");
   },
 
-  async update(req, res) {
+  async update(req) {
     knex(PLANT_TABLE).where({ id: req.params.id }).update(req.body);
   },
 
-  async delete(req, res) {
+  async delete(req) {
     knex(PLANT_TABLE).where({ id: req.params.id }).del();
   },
 };
