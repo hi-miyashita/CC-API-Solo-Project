@@ -11,8 +11,8 @@ PUT /plants/:id 　指定したidのデータを更新します
 DELETE /plants/;id 　指定したidのデータを削除します
 
 knexで詰まっています。
-localhost:3001/plantsにアクセスすると画面には以下の表示が出ます。
+localhost:3001/plantsにアクセスすると画面には以下の表示が出ます。<br/>
 {"error":"An error occurred while retrieving plants."}
 
-plantController.js 7行目の下記の箇所でエラーが発生しているようです。
+plantController.js 7行目の下記の箇所でエラーが発生しているようです。<br/>
 await knex.select().from("planttable");
