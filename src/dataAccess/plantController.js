@@ -1,26 +1,22 @@
-const plantModel = require("./plantModel");
+const config = require("./knexfile");
+const knex = require("knex")(config);
+const PLANT_TABLE = "planttable";
 
 module.exports = {
-  async index(req, res) {
-    const plants = await plantModel.getAll();
+  async findAll(req, res) {
+    const plants = await knex.select().from("planttable");
     res.json(plants);
   },
 
-  async view(req, res) {
-    const id = parseInt(req.params.id);
-    const plant = await plantModel.getById(id);
-    res.json(plant);
+  async create(req, res) {
+    knex(PLANT_TABLE).insert(req.body).returning("id");
   },
 
-  async edit(req, res) {
-    const id = parseInt(req.params.id);
-    const edittedId = await plantModel.update(id);
-    res.json(edittedId);
+  async update(req, res) {
+    knex(PLANT_TABLE).where({ id: req.params.id }).update(req.body);
   },
 
   async delete(req, res) {
-    const id = parseInt(req.params.id);
-    await plantModel.delete(id);
-    res.json();
+    knex(PLANT_TABLE).where({ id: req.params.id }).del();
   },
 };

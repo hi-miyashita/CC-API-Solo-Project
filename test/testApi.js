@@ -50,7 +50,7 @@ describe("POST /plants", () => {
     res.should.have.status(201);
   });
 
-  it("should createt new plant", async () => {
+  it("should create new plant", async () => {
     const res = await request.get("/plants");
     console.log(res.body[3]);
     res.body[3].area.should.equal("千島樺太");
