@@ -14,5 +14,9 @@ knexで詰まっています。<br/>
 localhost:3001/plantsにアクセスすると画面には以下の表示が出ます。<br/>
 {"error":"An error occurred while retrieving plants."}
 
-plantController.js 7行目の下記の箇所でエラーが発生しているようです。<br/>
-await knex.select().from("planttable");
+src/dataAccess/plantController.js 7行目の下記の箇所でエラーが発生しているようです。<br/>
+await knex.select().from("planttable");<br/>
+psql及びpgadmin上で<br/>
+select * from planttable<br/>
+を実行したところ、正常に動作するのでコンフィグファイル(src/dataAccess/knexfile.js)に誤りがあるのではないかと考えています。<br/>
+ただ、一見してこのコンフィグファイルは間違っていないように思えることに加え、これを用いたマイグレーションが成功しているため、どこに原因があるかわかりません。
