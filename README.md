@@ -10,7 +10,7 @@ POST /plants 　データを挿入します<br/>
 PUT /plants/:id 　指定したidのデータを更新します<br/>
 DELETE /plants/;id 　指定したidのデータを削除します<br/>
 
-knexで詰まっています。
+knexで詰まっています。<br/>
 localhost:3001/plantsにアクセスすると画面には以下の表示が出ます。<br/>
 {"error":"An error occurred while retrieving plants."}
 
